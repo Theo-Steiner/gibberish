@@ -1,0 +1,5 @@
+{
+	"permissions": ["scripting", "activeTab"],
+	"name": "GIBBERISH",
+	"version": "0.1"
+}
