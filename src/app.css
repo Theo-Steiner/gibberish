@@ -1,0 +1,97 @@
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: Barlow;
+	src: url('/fonts/Barlow-light.woff2') format('woff2');
+	font-weight: 200;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Barlow;
+	src: url('/fonts/Barlow-regular.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+}
+
+html {
+	--background-color: white;
+	--text-color: #151515;
+	--accent-color: rgb(162, 92, 36);
+	font-size: 62.5%;
+	font-family: Barlow, sans-serif;
+	font-weight: 200;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		--background-color: #151515;
+		--text-color: white;
+	}
+}
+
+body {
+	margin: 0;
+	padding: 3rem;
+	font-size: 1.6rem;
+	font-weight: 200;
+	line-height: 1.4;
+}
+
+button {
+	cursor: pointer;
+	color: var(--text-color);
+	padding: 6px 8px 8px 8px;
+	border-radius: 6px;
+	font-family: inherit;
+	font-size: 1.6rem;
+	letter-spacing: 0.8;
+	line-height: 1;
+	text-transform: uppercase;
+	background-color: transparent;
+	transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+	border: solid 1px var(--text-color);
+}
+
+button:hover,
+a:hover,
+a:visited:hover {
+	background-color: var(--text-color);
+	color: var(--background-color);
+}
+
+a {
+	color: var(--text-color);
+	display: inline-block;
+	text-decoration: none;
+	width: 2rem;
+	height: 2rem;
+	line-height: 1;
+	transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+	border: 1px solid var(--text-color);
+	border-radius: 9999px;
+}
+
+a:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px var(--accent-color);
+}
+
+a:visited {
+	color: var(--text-color);
+}
+
+p {
+	margin: 0.5rem 0;
+}
+
+h1 {
+	font-weight: 600;
+	margin: 1rem 0;
+}
