@@ -3,6 +3,9 @@ module.exports = {
 	extends: ['eslint:recommended', 'prettier'],
 	plugins: ['svelte3'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
+	globals: {
+		chrome: true
+	},
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020
