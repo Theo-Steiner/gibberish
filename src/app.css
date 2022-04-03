@@ -87,6 +87,33 @@ a:visited {
 	color: var(--text-color);
 }
 
+select,
+input {
+	-webkit-appearance: none;
+	/* Input font-sizes smaller than 16px are force zoomed in on iOS */
+	font-size: 1.6rem;
+	line-height: 1;
+	/* Inputs don't auto grow inside block containers, so here I manually set the width */
+	width: calc(100% - 4rem);
+	color: var(--background-color);
+	background-color: var(--text-color);
+	margin: 1rem 2rem;
+	padding: 1.2rem 2rem;
+	border-radius: 5px;
+	border: 1px solid var(--light-gray);
+	transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+input::placeholder,
+select:invalid {
+	color: var(--light-gray);
+}
+input:focus {
+	/* implement alternate focus style */
+	outline: none;
+	border: 1px solid var(--primary-color);
+}
+
 p {
 	margin: 0.5rem 0;
 }

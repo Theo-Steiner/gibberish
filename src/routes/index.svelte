@@ -19,7 +19,7 @@
 	};
 
 	async function waitForUserInteraction(message) {
-		const newInteraction = { data: message.greeting };
+		const newInteraction = { data: message.data };
 		try {
 			return await new Promise((resolve, reject) => {
 				newInteraction.resumeExecution = resolve;
@@ -36,6 +36,9 @@
 		chrome.runtime.onMessage.addListener(handleContentScriptMessage);
 		// cleanup on destroy
 		return () => {
+			if (interaction) {
+				interaction.abortExecution('Aborted execution');
+			}
 			chrome.runtime.onMessage.removeListener(handleContentScriptMessage);
 		};
 	});
@@ -43,7 +46,18 @@
 
 {#if interaction}
 	<p>
-		{interaction.data}
+		{#each interaction.data as form}
+			<form>
+				{#each form as { type, name, value, labelText, pattern, min, max }}
+					<label>
+						<span>{labelText}</span>
+						<input {name} {type} {value} {pattern} {min} {max} />
+					</label>
+				{/each}
+			</form>
+		{:else}
+			<p>No inputs found</p>
+		{/each}
 	</p>
 	<button
 		on:click={() => {
